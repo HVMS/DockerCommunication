@@ -1,0 +1,24 @@
+version: "3"
+services:
+   app1:
+      image: viru1699/app1
+      ports:
+         - "5000:5000"
+      volumes:
+         - ./:/usr/src/app/
+      networks:
+         - network1 # network defined here
+   app2:
+      image: viru1699/app2
+      volumes:
+         - ./:/usr/src/app/
+      networks:
+         - network1 #Using the same network so that both containers can communicate through API to eachother
+
+networks:
+   network1:
+      name: mynetwork
+
+# Reference:
+   # 1. https://docs.divio.com/en/latest/reference/docker-docker-compose/
+   # 2. https://docs.docker.com/storage/volumes/
